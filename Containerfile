@@ -25,7 +25,6 @@
 #    - @ublue-os/brew - Homebrew integration
 #
 # 2. Base Image Options (edit the FROM line below):
-#    - `ghcr.io/projectbluefin/dakota` (GNOME OS, Bluefin Dakota) - current
 #    - `quay.io/fedora-ostree-desktops/silverblue` (Fedora, GNOME desktop)
 #    - `quay.io/fedora-ostree-desktops/base-main` (Fedora, no desktop)
 #    - `quay.io/centos-bootc/centos-bootc:stream10` (CentOS-based)
@@ -49,9 +48,9 @@ COPY custom /custom
 COPY --from=common /system_files /oci/common
 COPY --from=brew /system_files /oci/brew
 
-# Base Image - Bluefin Dakota (GNOME OS, built from source), stable stream
+# Base Image - GNOME included (Fedora official OSTree desktop)
 # Renovate will keep the digest pin up to date.
-FROM ghcr.io/projectbluefin/dakota:stable@sha256:c10a8b189c34e53cf213f4b03342ac89c322b7e6a4eb0eb19012c6a59d7e4378
+FROM quay.io/fedora-ostree-desktops/silverblue:44@sha256:3a3e75aa015a497a1caf9d931616c0f41720b1cace2c94060716c56d52b917d0
 
 # Image identity - these define how bootc, fastfetch, and the ublue ecosystem
 # recognize your image. Change these to match your project name.
